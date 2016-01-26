@@ -8,7 +8,8 @@
   </head>
   <script>
     top = "api/2.0/events/names/"
-    MP.api.query(top, {type: 'general'}).done(function(foo){
+    events = MP.api.query(top, {type: 'general'})
+    $.when(events).done(function(foo){
       debugger
     })
   </script>
