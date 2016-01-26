@@ -8,11 +8,12 @@
   </head>
   <body>
     <script>
-      top = "api/2.0/events/names/"
-      MP.api.events()
-      events = MP.api.query(top, {type: 'general'})
-      $.when(events).done(function(foo){
-        debugger
+      MP.api.ready(function () {
+        top = "api/2.0/events/names/"
+        events = MP.api.query(top, {type: 'general'})
+        $.when(events).done(function(foo){
+          debugger
+        })
       })
     </script>
   </body>
