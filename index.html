@@ -6,11 +6,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
-  <script>
-    top = "api/2.0/events/names/"
-    events = MP.api.query(top, {type: 'general'})
-    $.when(events).done(function(foo){
-      debugger
-    })
-  </script>
+  <body>
+    <script>
+      top = "api/2.0/events/names/"
+      events = MP.api.query(top, {type: 'general'})
+      $.when(events).done(function(foo){
+        debugger
+      })
+    </script>
+  </body>
 </html>
