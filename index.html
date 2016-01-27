@@ -9,9 +9,26 @@
   <body>
     <script>
       MP.api.ready(function () {
-        top = "api/2.0/events/names/"
-        events = MP.api.query(top, {type: 'general'})
-        $.when(events).done(function(foo){
+        eventsNames = "api/2.0/events/names/"
+        eventsQuery = MP.api.query(eventsNames, {type: 'general', limit:10000})
+        customNames = "api/2.0/custom_events/"
+        customEventsQuery = MP.api.query(customNames, {})
+        $.when(eventsQuery, customEventsQuery).done(function(eventsResult, customEventsResults){
+          var customEventsObj = customEventsResults['custom_events']
+          var i = eventsResult.length - 1
+          var events = {};
+          for(i; i >= 0; i--){
+              events[eventsResult[i]] = true
+          }
+          i = customEventsObj.length - 1
+          for(i; i >= 0; i--){
+              events[customEventsObj[i]['name']] = false
+          }
+          newCustomEvents = []
+          filtered = _.pick(events, function(value, key, ob) {
+              return value;
+          })
+          console.log(_.keys(filtered))
           debugger
         })
       })
